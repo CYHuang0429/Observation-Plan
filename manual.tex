@@ -1,0 +1,53 @@
+\section{閱讀說明}
+
+\subsection{天球坐標系}
+\subsubsection{赤經：Right Ascension（RA）}
+天球上的赤經，功用與地理座標中的經度相同。赤經和經度都是沿著赤道向東或西方向量度，零點也是赤道上隨意選擇的。經度的零點是本初子午線；赤經的零點是春分點，這是太陽在3月下旬運行至北天球時所通過的點，也是地球的升交點。
+\par
+赤經的數值由春分點向東量度的，單位是時、分、秒。他與恆星時的關係密不可分。它既是時間的單位，也是角度的單位。\(1\text{h}=\ang{15;;}\text{，}1\text{m}=\ang{;15;}\text{，}1\text{s}=\ang{;;15}\)。
+\subsubsection{赤緯：Declination（Dec）}
+赤緯與地球上的緯度相似，是緯度在天球上的投影。赤緯的單位是度，更小的單位是「角分」和「角秒」，天赤道為0度，天北半球的赤緯度數為正數，天南半球的赤緯的度數為負數。天北極為\(+\ang{90;;}\)，天南極為\(-\ang{90;;}\)。在觀測者天頂的赤緯與該觀測地的緯度相同。
+\subsubsection{天頂赤經計算}
+首先，天頂的RA座標與當下的地方恆星時（Local Siderial Time, LST）相同，因此計算出RA最簡單的方法就是計算出LST。以筆者撰寫的時間為例，現在是2025年12月30日的22時07分01秒，我們來計算出天頂的赤經座標：
+\begin{enumerate}
+    \item 轉換為UTC時間
+        \begin{itemize}
+            \item 本地時間（UTC+8）：2025/12/30 22:07:01
+            \item UTC時間：2025/12/30 14:07:01
+        \end{itemize}
+    \item 查出儒略日（Julian Date）\par
+        接著我們需要從網路上搜尋當時（UTC時間）的儒略日，NASA JPL的網站十分適合（\url{https://ssd.jpl.nasa.gov/tools/jdc/#/cd}）。以我撰寫的時間為例，當時的Julian Date為2461040.0881944。\par
+        現今天文時間採用J2000.0標準，2000/01/01的Julian Date為2451545.0，相減可得當下與J2000.0的天數差為\(D=9495.0881944\)天。
+    \item 估算格林威治恆星時（GMST）\\
+        GMST的估算公式為\[\text{GMST}=18.697374558+24.06570982441908D\]
+        將\(D=9495.0881944\)代入，並對24取餘數，得到當時的GMST約為20.66小時
+    \item 修正經度得到地方恆星時（LST）\\
+        修正公式為：\[\text{LST}=\text{GMST}+\frac{\text{Longitude}}{15}\]
+        而帶入所在經度（以\(\ang{120.5;;}\text{E}\)估算）得到LST=28.6933，正規化（扣除24）後得到LST為4.6933時。轉換為60進位得到當時的天頂RA座標值為\textbf{\(4^\text{h }41^\text{m }36^\text{s}\)}
+\end{enumerate}
+\subsubsection{天頂座標計算}
+有了RA之後，Dec的計算非常簡單，以我的所在緯度\(\ang{23.5;;}\text{N}\)，即可知道我的天頂Dec為\(+\ang{23.5;;}\)，所以我的完整座標為：
+\begin{align*}
+    \text{RA}&=4^\text{h }41^\text{m }36^\text{s}\\
+    \text{Dec}&=+\ang{23.5;;}
+\end{align*}
+有了天頂的座標值，就可以對應後續內容中的座標來找出天體位置，也可以計算出大概多久過中天等等的相關資訊，在閱讀後續觀測計畫前請務必學會怎麼閱讀RA/Dec座標。
+
+\subsection{Field of View}
+在第二章中，我們整理了學校常見的望遠鏡與感光元件組合，計算出天文攝影中常用到的參數與比例數值。首先介紹常見的感光元件，目前嘉義高中與嘉義女中常使用到的天文相機多有以下三片感光元件，其對應到的相機型號如下所列：
+\begin{itemize}
+    \item IMX455（Full Frame）：ZWO ASI6200MM/MC Pro, Player One Zeus-M/C Pro
+    \item IMX571（APS-C）：ZWO ASI2600MM/MC Pro, Player One Poseidon-M/C Pro, ToupTek ATR26000M/C
+    \item IMX071（APS-C）：ZWO ASI071MC Pro
+\end{itemize}
+接著要帶大家讀懂第二章表中的Image Scale，有了對Image Scale的理解，未來也能更好的挑選適合的器材。
+\subsubsection{Image Scale}
+Image Scale的意義是每像素所涵蓋天空的範圍（角秒），用英文來說則是arcsecond/pixel。Image Scale可以由以下公式簡單估算：
+\[\text{Image Scale}=206.265\times\frac{\text{Pixel Size}\left(\mu\text{m}\right)}{\text{Focal Length}\left(\text{mm}\right)}\]
+對於望遠鏡與感光元件的組合來說，理想的Image Scale應該落在1到2之間，低於1或高於2各有其壞處，以下簡短解釋：
+\begin{itemize}
+    \item Image Scale < 1：Oversampling（超採樣）\\
+        天空的凝視度不允許相機與望遠鏡解析出無限的細節，因此在超採樣時，有許多像素其實是「浪費」的。乍聽之下雖然沒有壞處，但其實每個像素的信噪比（S/N Ratio）較差，相對地比較難凸顯處暗部細節。Oversampling可以靠Binning解決，Binning \(n\times n\)可以將Image Scale放大\(n\)倍。
+    \item Image Scale > 2：Undersampling（欠採樣）\\
+        欠採樣的壞處相對比較明顯，我們以太少的像素去解析天空細節，肉眼看起來星星會不平滑，有因像素過大造成的稜角。Undersampling沒有辦法靠軟體解決，必須更換硬體。
+\end{itemize}

@@ -1,0 +1,180 @@
+\documentclass[12pt]{article}
+\usepackage{xeCJK}
+\usepackage{tabto}
+\usepackage{amsmath}
+\usepackage[margin=2cm, a4paper]{geometry}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{blindtext}
+\usepackage{hyperref}
+\usepackage{calrsfs}
+\usepackage{amsmath, siunitx}
+\usepackage{longtable}
+\usepackage{makecell}
+\usepackage{mathtools}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\pagenumbering{gobble}
+
+\onehalfspacing
+\setlength{\parindent}{2em}
+\setCJKmainfont{kai.ttf}
+% \title{觀測計畫}
+% \author{蔡依憓、黃禎鈺}
+% \date{}
+\begin{document}
+% \maketitle
+% \newpage
+
+% ----------------------------------------------------
+% version alpha (for CYAC and CGAC)
+
+\begin{center}
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} 
+    \rule{\textwidth}{0.4pt} 
+    
+    \vspace{0.75\baselineskip} 
+        
+    {\LARGE 觀測計畫\\}
+    \vspace{0.3\baselineskip} 
+    {\LARGE \textbf{Observation Plan}}
+    
+    \vspace{0.75\baselineskip} 
+    
+    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} 
+    \rule{\textwidth}{1.6pt} 
+    
+    \vspace{0.5\baselineskip}
+    
+    CYAC \(\times\) CGAC
+    
+    \vspace{2\baselineskip}
+    \(\text{CGAC }7^{\text{th}}\)\text{ }蔡依憓\\
+    \(\text{CYAC }6^{\text{th}}\)\text{ }黃禎鈺\\
+    
+    % \vspace{2\baselineskip}
+    % 特別感謝\\
+    % 黃冠夫老師與陳盈霖老師
+    
+    \vfill
+    
+    Contacts\\
+    cysh.astronomy@gmail.com\\
+    B13901202@ntu.edu.tw\\
+    \vspace{\baselineskip}
+    \textbf{May the stars be ever in our favor.}
+    
+    \rule{\textwidth}{0.6pt} 
+    2025/06\text{ }～\text{ }2026/03 v2.2\(\alpha\)
+    
+\end{center}
+
+% ---------------------------------------------------------------------------
+% version beta (for NTHUAST)
+
+% \begin{center}
+%     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} 
+%     \rule{\textwidth}{0.4pt} 
+    
+%     \vspace{0.75\baselineskip} 
+        
+%     {\LARGE 星空概述與天體介紹\\}
+%     \vspace{0.3\baselineskip} 
+%     {\LARGE \textbf{The Night Sky and Deep Sky Objects}}
+    
+%     \vspace{0.75\baselineskip} 
+    
+%     \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} 
+%     \rule{\textwidth}{1.6pt} 
+    
+%     \vspace{0.5\baselineskip}
+    
+%     NTHU Astronomy Club
+    
+%     \vspace{2\baselineskip}
+%     NTHU CHE 蔡依憓\\
+%     NTU EE 黃禎鈺\\
+    
+%     \vspace{2\baselineskip}
+%     特別感謝\\
+%     黃冠夫老師與陳盈霖老師
+    
+%     \vfill
+    
+%     Contacts\\
+%     nthuobs@gmail.com\\
+%     B13901202@ntu.edu.tw\\
+%     \vspace{\baselineskip}
+%     \textbf{May the stars be ever in our favor.}
+    
+%     \rule{\textwidth}{0.6pt} 
+%     2025/06\text{ }～\text{ }2026/03 v2.2\(\beta\)
+    
+% \end{center}
+
+% -----------------------------------------------------------------
+% version gamma (for BPCEI)
+
+% \begin{center}
+%     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} 
+%     \rule{\textwidth}{0.4pt} 
+    
+%     \vspace{0.75\baselineskip} 
+        
+%     {\LARGE 星空概述與天體介紹\\}
+%     \vspace{0.3\baselineskip} 
+%     {\LARGE \textbf{The Night Sky and Deep Sky Objects}}
+    
+%     \vspace{0.75\baselineskip} 
+    
+%     \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} 
+%     \rule{\textwidth}{1.6pt} 
+    
+%     \vspace{0.5\baselineskip}
+    
+%     BPCEI \(\text{16}^\text{th}\)
+    
+%     \vspace{2\baselineskip}
+%     \(\text{BPCEI 15}^\text{th}\) 蔡依憓\\
+%     \(\text{BPCEI 15}^\text{th}\) 黃禎鈺\\
+    
+%     \vspace{2\baselineskip}
+%     特別感謝\\
+%     黃冠夫老師與陳盈霖老師
+    
+%     \vfill
+    
+%     Contacts\\
+%     bpceiphysics@gmail.com\\
+%     B13901202@ntu.edu.tw\\
+%     \vspace{\baselineskip}
+%     \textbf{May the stars be ever in our favor.}
+    
+%     \rule{\textwidth}{0.6pt} 
+%     2025/06\text{ }～\text{ }2026/03 v2.2\(\gamma\)
+    
+% \end{center}
+
+% -----------------------------------------------------------------
+
+% \maketitle
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+\pagebreak
+\cleardoublepage
+\pagenumbering{arabic}
+\input{manual.tex}
+\newpage
+\input{fov.tex}
+\newpage
+\input{spring.tex}
+\newpage
+\input{summer.tex}
+\newpage
+\input{autum.tex}
+\newpage
+\input{winter.tex}
+
+\end{document}
